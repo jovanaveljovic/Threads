@@ -8,9 +8,10 @@ public class Main {
 
 
 		Test t = new Test();
-		t.testPickLine();
-		t.testPickLine();
-		t.testSingWithDelay();
+		//t.testPickLine();
+		//t.testPickLine();
+		//t.testSingWithDelay();
+		t.testSingwithTimer();
 	}
 }
 	

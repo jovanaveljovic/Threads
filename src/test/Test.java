@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Timer;
 
 import music.Performance;
 import music.Singer;
@@ -57,5 +58,14 @@ public class Test {
 		bbk.SingWithDelay(love, 8);
 		System.out.println();
 		bono.SingWithDelay(love, 8);
+	}
+	
+	public void testSingwithTimer(){
+		Timer timer = new Timer();
+		ShoutTimerTast shout = new ShoutTimerTast(timer);
+		timer.schedule(shout, 2500);
+		
+		initialization();
+		bbk.SingWithDelay(love, 8);
 	}
 }
