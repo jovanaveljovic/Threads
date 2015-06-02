@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import music.Performance;
+import music.Singer;
 import music.Song;
 import music.Voice;
 
@@ -14,6 +16,9 @@ public class Test {
 	
 	private Song love;
 	List<String> lyrics;
+	Singer bbk;
+	Singer bono;
+	Performance performance;
 	
 	
 	private void initialization(){
@@ -25,6 +30,11 @@ public class Test {
 		
 		love = new Song("When love comes to town", lyrics);
 		
+		performance = new Performance(love, 1000);
+		
+		bbk = new Singer(performance, "B.B. King", Voice.LEAD);
+		bono = new Singer(performance, "Bono", Voice.BACKING);
+		
 		
 	}
 	
@@ -35,4 +45,10 @@ public class Test {
 		System.out.println(love.pickLine(Voice.LEAD, 1));
 	}
 	
+	public void testSing(){
+		initialization();
+		bbk.sing(love, 8);
+		System.out.println();
+		bono.sing(love, 8);
+	}
 }

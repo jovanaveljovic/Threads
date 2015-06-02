@@ -9,6 +9,7 @@ public class Main {
 
 		Test t = new Test();
 		t.testPickLine();
+		t.testPickLine();
 	}
 }
 	

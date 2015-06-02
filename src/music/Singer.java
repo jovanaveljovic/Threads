@@ -55,6 +55,30 @@ public class Singer {
 		}
 		
 	}
+	public void SingWithDelay(Song song, int noOfRepetitions ){
+		long delay = this.performance.getDelay();
+		for(int i = 0; i<noOfRepetitions; i+=2){
+			if(this.voice == voice.LEAD){
+				System.out.println(song.getLyrics().get(i%song.getLyrics().size()));
+				try {
+					wait(delay);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(this.voice==voice.BACKING){
+				System.out.println(song.getLyrics().get(i%song.getLyrics().size()+1));
+				try {
+					wait(delay);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}
+	}
 	
 	
 	
