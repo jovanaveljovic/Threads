@@ -55,7 +55,7 @@ public class Singer {
 		}
 		
 	}
-	public void SingWithDelay(Song song, int noOfRepetitions ){
+	public synchronized void SingWithDelay(Song song, int noOfRepetitions ){
 		long delay = this.performance.getDelay();
 		for(int i = 0; i<noOfRepetitions; i+=2){
 			if(this.voice == voice.LEAD){

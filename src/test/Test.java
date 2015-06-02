@@ -51,4 +51,11 @@ public class Test {
 		System.out.println();
 		bono.sing(love, 8);
 	}
+	
+	public void testSingWithDelay(){
+		initialization();
+		bbk.SingWithDelay(love, 8);
+		System.out.println();
+		bono.SingWithDelay(love, 8);
+	}
 }
