@@ -6,6 +6,36 @@ public class Singer {
 	private String singerName;
 	private Voice voice;
 	
+	private Synchronized synch;
+	private boolean stop;
+	
+	
+	public Singer(Performance performance, String singerName, Voice voice,
+			Synchronized synch, boolean stop) {
+		super();
+		this.performance = performance;
+		this.singerName = singerName;
+		this.voice = voice;
+		this.synch = synch;
+		this.stop = stop;
+	}
+
+	public Synchronized getSynch() {
+		return synch;
+	}
+
+	public void setSynch(Synchronized synch) {
+		this.synch = synch;
+	}
+
+	public boolean isStop() {
+		return stop;
+	}
+
+	public void setStop(boolean stop) {
+		this.stop = stop;
+	}
+
 	public Singer() {
 		super();
 		
@@ -80,6 +110,29 @@ public class Singer {
 		}
 	}
 	
-	
+	public void run(){
+		sing();
+	}
+	public void sing(){
+		Song song = performance.getSong();
+		long delay = performance.getDelay();
+		
+		int i = 0;
+		String line = null;
+		
+		while(!stop){
+			if(this.voice==voice.LEAD){
+				line = song.pickLine(this.voice, song.getLyrics().size());
+				synch.singLeadVoice(line, delay);
+			}
+			if(this.voice==voice.BACKING){
+				line = song.pickLine(this.voice, song.getLyrics().size()+1);
+				synch.singBeakingVoice(line, delay);
+			}
+			i+=2;
+			
+			
+		}
+	}
 	
 }

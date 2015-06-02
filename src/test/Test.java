@@ -9,6 +9,7 @@ import java.util.Timer;
 import music.Performance;
 import music.Singer;
 import music.Song;
+import music.Synchronized;
 import music.Voice;
 
 public class Test {
@@ -16,10 +17,13 @@ public class Test {
 	public static final Scanner IN  = new Scanner(System.in);
 	
 	private Song love;
-	List<String> lyrics;
-	Singer bbk;
-	Singer bono;
-	Performance performance;
+	private List<String> lyrics;
+	private Singer bbk;
+	private Singer bono;
+	private Performance performance;
+	private Synchronized synch;
+	private boolean stop;
+	
 	
 	
 	private void initialization(){
@@ -33,8 +37,11 @@ public class Test {
 		
 		performance = new Performance(love, 1000);
 		
-		bbk = new Singer(performance, "B.B. King", Voice.LEAD);
-		bono = new Singer(performance, "Bono", Voice.BACKING);
+		synch = new Synchronized(true);
+		stop=false;
+		
+		//bbk = new Singer(performance, "B.B. King", Voice.LEAD, synch, stop);
+		//bono = new Singer(performance, "Bono", Voice.BACKING, synch, stop);
 		
 		
 	}
@@ -43,7 +50,9 @@ public class Test {
 		initialization();
 		System.out.println(love.pickLine(Voice.ALL, 2));
 		System.out.println();
-		System.out.println(love.pickLine(Voice.LEAD, 1));
+		System.out.println(love.pickLine(Voice.LEAD, 2));
+		System.out.println();
+		System.out.println(love.pickLine(Voice.LEAD, 3));
 	}
 	
 	public void testSing(){
@@ -67,5 +76,15 @@ public class Test {
 		
 		initialization();
 		bbk.SingWithDelay(love, 8);
+	}
+	
+	public void testSingWithThreads(){
+		initialization();
+		bbk.start();
+		bono.start();
+		
+		IN.nextLine();
+		bbk.setStop(true);
+		bono.setStop(true);
 	}
 }

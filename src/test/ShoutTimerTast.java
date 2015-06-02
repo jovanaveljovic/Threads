@@ -13,6 +13,9 @@ public class ShoutTimerTast extends TimerTask {
 		System.out.println("Yeah");
 		System.out.println();
 		
+		timer.cancel();
+		timer.purge();
+		
 	}
 
 	public Timer getTimer() {
